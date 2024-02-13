@@ -1,0 +1,1 @@
+# rabbitmq-poc-gitops-flux
