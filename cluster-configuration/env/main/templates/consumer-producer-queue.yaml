@@ -1,0 +1,11 @@
+apiVersion: rabbitmq.com/v1beta1
+kind: Queue
+metadata:
+  name: {{ .Values.queue.name }}-queue-{{ .Values.env }} # name of this custom resource; does not have to the same as the actual queue name
+spec:
+  name: {{ .Values.queue.name }}-{{ .Values.env }} # name of the queue
+  autoDelete: false
+  durable: true
+  rabbitmqClusterReference:
+    name: rabbitmq-{{ .Values.env }}
+    namespace: rabbitmq-instance-{{ .Values.env }}

@@ -1,0 +1,11 @@
+apiVersion: rabbitmq.com/v1beta1
+kind: Binding
+metadata:
+  name: binding-{{ .Values.exchange.name }}-exchange-{{ .Values.env }}
+spec:
+  source: {{ .Values.exchange.name }}-{{ .Values.env }} # an existing exchange
+  destination: {{ .Values.queue.name }}-{{ .Values.env }} # an existing queue
+  destinationType: queue # can be 'queue' or 'exchange'
+  rabbitmqClusterReference:
+    name: rabbitmq-{{ .Values.env }}
+    namespace: rabbitmq-instance-{{ .Values.env }}

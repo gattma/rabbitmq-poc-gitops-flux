@@ -1,0 +1,5 @@
+env: main-flux
+exchange:
+  name: test
+queue:
+  name: test
