@@ -1,0 +1,19 @@
+# TODO HelmRelease funktioniert nur wenn HelmChart im Repo liegt
+# TODO Pure Yaml brauch Kustomization (https://fluxcd.io/flux/components/kustomize/kustomizations/)
+# TODO HelmRelease für config verwenden, Hier auf Kustomization umbauen
+apiVersion: helm.toolkit.fluxcd.io/v2beta2
+kind: HelmRelease
+metadata:
+  name: rabbitmq-main-config
+  namespace: flux-system
+spec:
+  interval: 5m
+  targetNamespace: rabbitmq-instance-main-flux
+  chart:
+    spec:
+      chart: ./cluster-configuration/env/main
+      sourceRef:
+        kind: GitRepository
+        name: rabbitmq-poc-gitops-flux-repo
+        namespace: flux-system
+      interval: 1m

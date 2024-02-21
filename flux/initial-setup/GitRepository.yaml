@@ -1,15 +1,10 @@
 apiVersion: source.toolkit.fluxcd.io/v1
 kind: GitRepository
 metadata:
-  name: rabbitmq-instance
+  name: rabbitmq-poc-gitops-flux-repo
   namespace: flux-system
 spec:
   interval: 1m
   url: https://github.com/gattma/rabbitmq-poc-gitops-flux.git
   ref:
-    branch: master
-  ignore: |
-    # exclude all
-    /*
-    # include charts directory
-    !/cluster-instance/env/
+    branch: main
